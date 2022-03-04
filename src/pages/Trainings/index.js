@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React, { useState } from 'react';
-import {useLocation} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 
 const Trainings = () => {
     const location = useLocation();
@@ -84,13 +84,20 @@ const Trainings = () => {
 
     return (
         <div>
-            {trainings.map((training) => {
+            {trainings.map((training, i) => {
                 return (
-                <div>
+                <div key={training.codigo+i}>
                     <p>{training.nome}</p>
                     <p>Codigo: {training.codigo}</p>
                     <p>Última Execução: {moment(training.ultimaexecucao).format('DD/MM/YYYY HH:mm')}</p>
-                    <a>IR PARA TREINO -> </a>
+                    <Link
+                        to={{
+                            pathname: '/workout',
+                        }}
+                        state= {{
+                            codigo: training
+                        }}
+                    >IR PARA TREINO -> </Link>
                 </div>
                 )
             })}
