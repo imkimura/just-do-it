@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import Checkbox from '../../components/Checkbox';
 
 const Training = () => {
     const location = useLocation();
+    const [isDisable, setIsDisable] = useState(true);
     const {codigo} = location.state || '';
-    
+
     const [tasks, setTasks] = useState(
         new Array(5).fill(false)
     );
@@ -141,21 +142,38 @@ const Training = () => {
         setTasks(updatedTasks);
     };
 
+    const handleWithTasksDone = (e) => {
+        e.preventDefault();
+
+        console.log('oi');
+    };
+
+    useEffect(() => {
+        const value = tasks.every(task => task);
+
+        setIsDisable(!value);
+    }, [tasks]);
+
     return (
         <div>
-            <div>{codigo.codigo}</div>
-            {training.map((activie, index) => {
-                return (
-                    <div key={activie.ordem}>
-                        <Checkbox
-                            label={activie.nome}
-                            name="tasks"
-                            value={tasks[index]}
-                            onChange={() => handleWithCheckTask(index)}
-                        />
-                    </div>
-                )
-            })}
+            <form onSubmit={handleWithTasksDone}>
+                <p>{codigo.codigo}</p>
+                {training.map((activie, index) => {
+                    return (
+                        <div key={activie.ordem}>
+                            <Checkbox
+                                label={activie.nome}
+                                name="tasks"
+                                value={tasks[index]}
+                                onChange={() => handleWithCheckTask(index)}
+                            />
+                        </div>
+                    )
+                })}
+                <button type='submit' disabled={isDisable}>
+                    Concluir
+                </button>
+            </form>
         </div>
     );
 }
