@@ -4,9 +4,12 @@ import Input from '../../components/Input';
 
 import api from '../../services/api';
 
+import logo from '../../assets/images/logo_selfit.png';
+
 const Home = () => {
     const [cpf, setCpf] = useState('');
     const navigate = useNavigate();
+
     // async function searchTrains() {
     //     const res = await api.get('/turmas/consultarPrograma?codigocliente=1179534');
 
@@ -25,18 +28,22 @@ const Home = () => {
     }
 
     return (
-        <div className="search">
-            <form onSubmit={handleSearchClient}>
-                <p>BUSCAR</p>
-                <Input
-                    type="text"
-                    name="cpf"
-                    value={cpf}
-                    onChange={(e) => setCpf(e.target.value)}
-                    placeholder="Digite seu CPF..."
-                />
-                <button type='submit'>BUSCAR</button>
-            </form>
+        <div>
+            <div>
+                <img src={logo} width={200}/>
+            </div>
+            <div className="search">
+                <form onSubmit={handleSearchClient}>
+                    <Input
+                        type="text"
+                        name="cpf"
+                        value={cpf}
+                        onChange={(e) => setCpf(e.target.value)}
+                        placeholder="Digite seu CPF..."
+                    />
+                    <button type='submit'>BUSCAR</button>
+                </form>
+            </div>
         </div>
     );
 };
