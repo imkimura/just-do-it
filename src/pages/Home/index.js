@@ -6,6 +6,8 @@ import api from '../../services/api';
 
 import logo from '../../assets/images/logo_selfit.png';
 
+import './style.css';
+
 const Home = () => {
     const [cpf, setCpf] = useState('');
     const navigate = useNavigate();
@@ -28,7 +30,7 @@ const Home = () => {
     }
 
     return (
-        <div>
+        <div className='container'>
             <div>
                 <img src={logo} width={200}/>
             </div>
@@ -41,9 +43,11 @@ const Home = () => {
                         onChange={(e) => setCpf(e.target.value)}
                         placeholder="Digite seu CPF..."
                     />
-                    <button type='submit'>BUSCAR</button>
+                    <button type='submit'>
+                        <i class="fas fa-search"></i>
+                    </button>
                 </form>
-            </div>
+            </div >
         </div>
     );
 };

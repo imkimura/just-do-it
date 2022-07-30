@@ -1,0 +1,25 @@
+.container > div {
+    text-align: center;
+}
+
+.search > form {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.search button {
+    background: #e5212d !important;
+    padding: 6px;
+    height: 5.6rem;
+    width: 5.6rem;
+    border-radius: 3rem;
+    position: absolute;
+    margin-top: 7px;
+    margin-right: -16px;
+    box-shadow: -2px 1px 13px 0px #e5212d59;
+}
+
+.search .fas {
+    color: #181818f2;
+}

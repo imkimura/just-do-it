@@ -86,10 +86,13 @@ const Trainings = () => {
 
     return (
         <div>
+            <h1>Seus treinos</h1>
             {trainings.map((training, i) => {
                 return (
                 <div className='card-training' key={training.codigo+i}>
-                    <p>{training.nome}</p>
+                    <p style={{fontWeight: 'bold'}} >
+                    <i class="fas fa-dumbbell"></i> {training.nome}
+                    </p>
                     <p>Codigo: {training.codigo}</p>
                     <p>Última Execução: {moment(training.ultimaexecucao).format('DD/MM/YYYY HH:mm')}</p>
                     <Link
@@ -99,7 +102,7 @@ const Trainings = () => {
                         state= {{
                             codigo: training
                         }}
-                    >IR PARA TREINO -> </Link>
+                    >IR PARA TREINO <i class="fas fa-long-arrow-alt-right"></i></Link>
                 </div>
                 )
             })}
